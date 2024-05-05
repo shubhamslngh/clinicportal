@@ -1,0 +1,7 @@
+<h1>Welcome to the Receptionist Portal</h1>
+<p>This area is dedicated to managing patient records and appointments.</p>
+<nav>
+  <%= link_to 'Manage Patients', patients_path %>
+  <%= link_to 'View Appointments', appointments_path, class: 'btn btn-link' %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+</nav>

@@ -1,0 +1,13 @@
+<h1>Welcome to the Health Portal</h1>
+
+<% if user_signed_in? %>
+  <p>You are logged in as <strong><%= current_user.email %></strong>.</p>
+  <% if current_user.doctor? %>
+    <%= link_to 'Doctor Dashboard', doctors_index_path, class: 'btn btn-primary' %>
+  <% elsif current_user.receptionist? %>
+    <%= link_to 'Receptionist Dashboard', receptionists_index_path, class: 'btn btn-primary' %>
+  <% end %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :get, class: 'btn btn-secondary' %>
+<% else %>
+  <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary' %>
+<% end %>
