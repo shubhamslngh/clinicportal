@@ -2,10 +2,9 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@hotwired/turbo-rails"
-import Chartkick from 'chartkick';
-import Chart from 'chart.js';
-Rails.start();
+import "chartkick"
+import "Chart.bundle"
+
+console.log(Chart);
 
 
-Chartkick.addAdapter(Chart);
-window.Chartkick = Chartkick;

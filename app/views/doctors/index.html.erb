@@ -1,5 +1,5 @@
 <h1>Registered Patients</h1>
-
+<%= link_to 'Sign out', destroy_user_session_path, method: :get, class: 'btn btn-secondary' %>
 <table>
   <thead>
     <tr>
@@ -9,6 +9,7 @@
       <th>Registered On</th>
     </tr>
   </thead>
+   <%= line_chart Patient.group_by_day(:created_at, format: "%B %d, %Y").count, height: "500px" %>
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
@@ -17,8 +18,9 @@
         <td><%= patient.email %></td>
         <td><%= patient.created_at.to_date %></td>
       </tr>
-      <%= line_chart @patients_by_day, xtitle: "Date", ytitle: "Number of Patients" %>
+     
 
     <% end %>
   </tbody>
 </table>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

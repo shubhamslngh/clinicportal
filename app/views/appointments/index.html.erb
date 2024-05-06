@@ -1,0 +1,31 @@
+<h1>Appointments</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Description</th>
+      <th>Patient</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td>
+  <%= appointment.date.strftime("%Y-%m-%d") if appointment.date %>
+</td>
+<td>
+  <%= appointment.time.strftime("%H:%M") if appointment.time %>
+        <td><%= appointment.description %></td>
+        <td><%= appointment.patient.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_appointment_path(appointment) %>
+          <%= button_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Appointment', new_appointment_path %>
